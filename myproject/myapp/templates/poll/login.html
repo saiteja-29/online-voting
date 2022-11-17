@@ -1,0 +1,72 @@
+<h1 style="text-align:center">Login Now</h1>
+<style>
+   h3{
+    color:red;
+    text-align:center;
+   } 
+       body{
+        color:rgb(250,200,200);
+    margin:0;
+    padding:0;
+    font-family:sans-serif;
+    background:url('https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4wtcG?ver=523b');
+    background-size:cover;
+}
+.box{
+    margin:50px 500px;
+    width:400px;
+    padding:300px,100px,100px,300px;   
+    background-color:rgba(100, 93, 102, 0.657);
+    text-align:center;
+}
+.box h1{
+    color:white;
+    font-weight:700;
+
+}
+.box input[type="text"],.box input[type="password"]{
+    border:0;
+    background:none;
+    display:block;
+    margin:20px auto;
+    text-align:center;
+    border:3px solid rgb(255, 249, 249);
+    padding:14px 30px;
+    outline:none;
+    color:white;
+    border-radius:20px;
+    transition:0.25px;
+}
+.box input[type="submit"]{
+    border:0;
+    background:none;
+    display:block;
+    margin:20px auto;
+    text-align:center;
+    border:3px solid rgba(79, 71, 189, 0.869);
+    padding:14px 30px;
+    outline:none;
+    color:white;
+    border-radius:20px;
+    transition:0.25px;
+    cursor:pointer;
+}
+</style>
+<html>
+{% for message in messages %}
+<h3>{{message}}</h3>
+{% endfor %}
+<body>
+<form  action="login" method="POST" >
+    {% csrf_token %}
+    <h2 class="box">
+    <p>Username : </p>
+    <input type="text" name="username"placeholder="Enter Username"/>
+    <p>Password : </p>
+    <input type="password" name="password"placeholder="Enter Password"/><br>
+    <a href="register"><p> Create account</p></a>
+    <input type="submit" name="login" href="index"/>
+    </h2>
+</form>
+</body>
+</html>

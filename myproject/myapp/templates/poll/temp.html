@@ -1,0 +1,22 @@
+{% load static%}
+<html>
+<head>
+    
+    <title>Home_Page</title>
+    <link rel="stylesheet" href="{% static 'index.css'%}">
+</head>
+<body class="bgc">
+    
+    <ul >
+        <li class="active"><a  href=home.html><h1 style="color:rgb(255,255,255); font-size:20px">Home</h1></a></li>
+        <li><a  href=profile.html><h1 style="color:rgb(255,255,255); font-size:20px">Profile</h1></a></li>
+        {% for feature in features %}
+        <li><a  href="list.html"><h1 style="color:white ;font-size:20px">{{feature.name}}</h1></a></li>
+        {%endfor%}
+        <li><a  href="contact.html"><h1 style="color:rgb(255,255,255);font-size:20px">Contact Us</h1></a></li>
+       
+        <li><a  href="about.html"><h1 style= "color:rgb(255,255,255);font-size:20px">About Us</h1></a></li>
+        <li style="float:right"><a  href=index.html><h1 style="color:rgb(255,255,255); font-size:20px">Log Out</h1></a></li>
+    </ul>
+</body>
+</html>

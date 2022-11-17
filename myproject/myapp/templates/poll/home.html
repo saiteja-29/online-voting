@@ -1,0 +1,52 @@
+
+<style>
+#center{
+   float:center
+  }
+</style>
+<html>
+{% extends "poll/base.html" %}
+{% load static%}
+{% block title %}Homepage{% endblock %}
+
+{% block main %}
+<body method='POST'>
+    {% csrf_token %}
+<div class="row">
+    <div class="col-lg-8 col-lg-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Available Polls</h3>
+            </div>
+              {% for poll in polls %}  
+            <ul class="list-group">
+                
+                <li class="list-group-item">
+                    <strong>{{poll.question}}</strong>
+                    <span class="pull-right">
+                        {% if user.is_superuser%}
+                        {% else %}
+                        <a href="{% url 'vote' poll.id %}" class="btn btn-info btn-xs">Vote</a> &nbsp;
+                        {% endif %}
+                        {% if user.is_superuser %}
+                        <a href="{% url 'results' poll.id %}" class="btn btn-default btn-xs">View Results</a> &nbsp;
+                        {% endif %}
+                    </span>
+                </li>
+               
+                
+            </ul>
+ {%endfor %}
+        </div>
+    </div>
+</div>
+{% if user.is_superuser %}
+{% else %}
+<h1 style="text-align:center">
+<a href="{% url 'logout' %}" class="btn btn-info btn-xs" >submit</a> 
+</h1>
+{% endif %}
+</body>
+{% endblock %}
+
+</html>

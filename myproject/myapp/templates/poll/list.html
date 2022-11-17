@@ -1,0 +1,64 @@
+{% load static %}
+<style>
+ul{ 
+ list-style-type: none;
+  padding:0;
+      overflow:hidden;
+   background-color:rgb(42, 40, 61);
+}
+li{ 
+  float:left;
+}
+li a{
+  display:block;
+  padding:5px 16px;
+  text-align:center;
+  text-decoration: none; 
+  }
+li a:hover{
+  background-color:rgb(138, 113, 59);
+}
+.active{
+  background-color:rgb(51, 166, 95)
+}
+{% comment %}navigation bar  {% endcomment %}
+.bgc{
+  background:url('https://wallpaper.dog/large/20432709.jpg');
+  background-size:cover;
+  color:white;
+}
+</style>
+<html method="POST">
+<ul >
+        <li ><a  href="index"><h1 style="color:rgb(255,255,255); font-size:20px;">Home</h1></a></li>
+        <li><a  href="profile"><h1 style="color:rgb(255,255,255); font-size:20px;">Profile</h1></a></li>
+         <li class="active"><a  href="list"><h1 style= "color:rgb(255,255,255);font-size:20px;">Candidates</h1></a></li>
+        <li><a  href="home"><h1 style="color:white ;font-size:20px">Elections</h1></a></li>
+        {% if user.is_superuser%}
+        {% else%}
+        <li ><a  href="contact"><h1 style="color:rgb(255,255,255);font-size:20px">Contact Us</h1></a></li>
+       {% endif %}
+        <li style="float:right"><a  href="logout"><h1 style="color:rgb(255,255,255); font-size:20px;">Log Out</h1></a></li>
+    </ul>
+<body class='bgc'>
+  <p>
+  <h1>DINING SECRETARY</h1>
+{%load static%}<img  width='400px' style="padding:20px;" src="{% static "dining-1.jpeg"%}"/>
+{%load static%}<img  width='400px' style="padding:20px;" src="{% static "dining-2.jpeg"%}"/>
+{%load static%}<img  width='400px'style="padding:20px;" src="{% static "dining-3.jpeg"%}"/>
+  </p>
+   <p>
+  <h1>SCIENCE AND TECH SECRETARY</h1>
+{%load static%}<img  width='400px' style="padding:20px;" src="{% static "snt-1.jpeg"%}"/>
+{%load static%}<img  width='400px' style="padding:20px;" src="{% static "snt-2.jpeg"%}"/>
+{%load static%}<img  width='400px'style="padding:20px;" src="{% static "dining-3.jpeg"%}"/>
+  </p>
+   <p>
+  <h1>SPORTS SECRETARY</h1>
+{%load static%}<img  width='400px' style="padding:20px;" src="{% static "sports-1.jpeg"%}"/>
+{%load static%}<img  width='400px' style="padding:20px;" src="{% static "sports-2.jpeg"%}"/>
+{%load static%}<img  width='400px'style="padding:20px;" src="{% static "sports-3.jpeg"%}"/>
+  </p>
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+<h1>Sign Up Below</h1>
+<style>
+    h5{
+        color:red;
+    }
+    body{
+        color:rgb(250,200,200);
+        text-align: center;
+    margin:0;
+    padding:0;
+    font-family:sans-serif;
+    background:url('https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4wtcG?ver=523b');
+    background-size:cover;
+}
+.box{
+    margin:50px 500px;
+    width:400px;
+    
+    background-color:rgba(100, 93, 102, 0.657);
+    text-align:center;
+}
+.box h1{
+    color:white;
+    font-weight:700;
+
+}
+.box input[type="text"],.box input[type="email"],.box input[type="password"],.box input[type="password2"]{
+    border:0;
+    background:none;
+    display:block;
+    margin:20px auto;
+    text-align:center;
+    border:3px solid rgb(255, 249, 249);
+    padding:14px 30px;
+    outline:none;
+    color:white;
+    border-radius:20px;
+    transition:0.25px;
+}
+.box input[type="submit"]{
+    border:0;
+    background:none;
+    display:block;
+    margin:20px auto;
+    text-align:center;
+    border:3px solid rgba(79, 71, 189, 0.869);
+    padding:14px 30px;
+    outline:none;
+    color:white;
+    border-radius:20px;
+    transition:0.25px;
+    cursor:pointer;
+}
+</style>
+{% for message in messages%}
+<h5>{{message}}</h5>
+{% endfor %}
+<body>
+<form method="POST" action="register" class="box">
+    {% csrf_token %}
+    <p>Username:</p>
+    <input type="text" name="username"placeholder="Enter Username" />
+    <p>Email:</p>
+    <input type="email" name="email"placeholder="Enter email"/>
+    <p>Password:</p>
+    <input type="password" name="password"placeholder="Enter Password"/>
+    <p>Repeat Password:</p>
+    <input type="password" name="password2"placeholder="Repeat Password"/>
+    <input type="submit" href="login"/><br>
+</form>
+</body>

@@ -1,0 +1,74 @@
+{% comment %} <textarea  class="form-control" rows="3"></textarea> {% endcomment %}
+
+{% comment %} edited {% endcomment %}
+{% load widget_tweaks %}    
+
+
+{% block main %}
+
+{% load static %}
+<style>
+ul{ 
+ list-style-type: none;
+  padding:0;
+      overflow:hidden;
+   background-color:rgb(42, 40, 61);
+}
+li{ 
+  float:left;
+}
+li a{
+  display:block;
+  padding:5px 16px;
+  text-align:center;
+  text-decoration: none; 
+  }
+li a:hover{
+  background-color:rgb(138, 113, 59);
+}
+.active{
+  background-color:rgb(51, 166, 95)
+}
+.bgc{
+  background:url('https://c4.wallpaperflare.com/wallpaper/586/603/742/minimalism-4k-for-mac-desktop-wallpaper-preview.jpg');
+  background-size:cover;
+}
+{% comment %}navigation bar  {% endcomment %}
+</style>
+<html method="POST">
+    {% csrf_token %}
+   
+    <body class="bgc">
+ <ul >
+        <li ><a  href="index"><h1 style="color:rgb(255,255,255); font-size:20px;">Home</h1></a></li>
+        <li><a  href="profile"><h1 style="color:rgb(255,255,255); font-size:20px;">Profile</h1></a></li>
+         <li><a  href="list"><h1 style= "color:rgb(255,255,255);font-size:20px;">Candidates</h1></a></li>
+        <li><a  href="home"><h1 style="color:white ;font-size:20px">Elections</h1></a></li>
+        <li class="active"><a  href="contact"><h1 style="color:rgb(255,255,255);font-size:20px">Contact Us</h1></a></li>
+       
+        <li style="float:right"><a  href="logout"><h1 style="color:rgb(255,255,255); font-size:20px;">Log Out</h1></a></li>
+    </ul>
+
+    
+                    <div class="row">
+                        <div class="col-lg-12">
+
+                            <div class="form-group">
+                                <label for="feedback" style="text-align:center ;font-size:30px ">Enter your feedback/ for any quaries</label><br><p>
+                                {% comment %} <textarea name="question" id="question" class="form-control" rows="3"></textarea> {% endcomment %}
+                                {%render_field form.feedback class="form-control" rows="5" %}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <br>
+                        <div class="col-lg-4">
+                            <button type="submit" class="btn btn-info">Submit</button>
+                        </div>
+                    </div>
+                    <h2 style="text-allign:center ;color:white;">
+                      contact-mail: onlinevoting@gmail.com<br>
+                      contact no: 1-800-419-0157<br>
+                </body>
+</html>
+{% endblock %}

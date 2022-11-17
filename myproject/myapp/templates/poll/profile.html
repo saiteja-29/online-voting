@@ -1,0 +1,65 @@
+     <style>
+        {% comment %} navigation bar {% endcomment %}
+ul{ 
+ list-style-type: none;
+  padding:0;
+      overflow:hidden;
+   background-color:rgb(42, 40, 61);
+}
+li{ 
+  float:left;
+}
+li a{
+  display:block;
+  padding:5px 16px;
+  text-align:center;
+  text-decoration: none; 
+  }
+li a:hover{
+  background-color:rgb(138, 113, 59);
+}
+.active{
+  background-color:rgb(51, 166, 95)
+}
+{% comment %}end of navigation bar  {% endcomment %}
+{% comment %} profile {% endcomment %}
+.prof{
+ background-color: rgba(105, 123, 103, 0.583);
+ color:rgb(229, 229, 229);
+ padding:50px 50px 50px 100px;
+    border:solid;
+    border-radius: 10%;
+    border-color: black;
+    margin:50px 300px 10px 300px;
+   font-size: 25px;
+    
+}
+{% comment %} end of profile {% endcomment %}
+</style>  
+<html method="POST">
+    <head>   
+       <title>Profile page</title>
+    </head>
+    <body style="background-image: url('https://wallpaper.dog/large/996616.jpg');background-size:cover">
+      <ul >
+      <li ><a  href="index"><h1 style="color:rgb(255,255,255); font-size:20px;">Home</h1></a></li>
+      <li class="active"><a  href="profile"><h1 style="color:rgb(255,255,255); font-size:20px;">Profile</h1></a></li>
+      <li><a  href="list"><h1 style= "color:rgb(255,255,255);font-size:20px;">Candidates</h1></a></li>
+      <li><a  href="home"><h1 style="color:white ;font-size:20px">Elections</h1></a></li>
+{% if user.is_superuser%}
+        {% else%}
+        <li ><a  href="contact"><h1 style="color:rgb(255,255,255);font-size:20px">Contact Us</h1></a></li>
+       {% endif %}      
+      <li style="float:right"><a  href="login"><h1 style="color:rgb(255,255,255); font-size:20px;">Log Out</h1></a></li>
+  </ul>
+        <h1 class="prof" method="POST">
+            <p style="text-align:center;font-size:35px">Profile</p>
+            <p>NAME : {{user.username}}</p>
+        <p>USER NAME : {{user.username}}</p>
+      
+       <p>LOGIN MAIL: {{user.email}}</p>
+       <p>BRANCH: CSE</p>
+       <p>YEAR: 2ND YEAR</p>
+        </h1>
+    </body>
+    </html>

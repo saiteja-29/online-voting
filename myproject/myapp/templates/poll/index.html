@@ -1,0 +1,137 @@
+{% load static %}
+<style>
+ul{ 
+ list-style-type: none;
+  padding:0;
+      overflow:hidden;
+      {% if user.is_authenticated%}
+   background-color:rgb(42, 40, 61);
+   {%else %}
+   background-color:rgba(27, 27, 45, 0.669);
+   {%endif%}
+}
+li{ 
+  float:left;
+}
+li a{
+  display:block;
+  padding:5px 16px;
+  text-align:center;
+  text-decoration: none; 
+  }
+li a:hover{
+  background-color:rgb(138, 113, 59);
+}
+.active{
+  background-color:rgb(51, 166, 95)
+}
+{% comment %}navigation bar  {% endcomment %}
+</style>
+
+<!DOCTYPE html>
+<html method="POST">
+  {% csrf_token %}
+  <head>
+    <link rel="stylesheet" href="{% static 'index.css'%}" />
+    <title>Index page</title>
+    <style>
+  #right{
+   float:right
+  }
+  #left{
+    float:left
+  }
+  .bgc{
+    {% if user.is_authenticated%}
+    background:url('https://t3.ftcdn.net/jpg/03/89/61/88/360_F_389618887_PImTbyGB4vTQOoGKxjhOKp2w7hZmcNAs.jpg');
+  background-size:cover;
+    color:rgb(10,10,10);
+  
+  {% else %}
+  
+  background:url('https://caltechsites-prod.s3.amazonaws.com/scienceexchange/images/Caltech-Voting-Phone-Online-S.2e16d0ba.fill-933x525-c100.jpg');
+    background-size:cover;
+  {% endif %}
+  }
+</style>
+  </head>
+  <body class='bgc'>
+{% comment %} end of navigation bar {% endcomment %}
+    {% if user.is_authenticated %}
+    <ul >
+        <li class="active"><a  href="index"><h1 style="color:rgb(255,255,255); font-size:20px;">Home</h1></a></li>
+        <li><a  href="profile"><h1 style="color:rgb(255,255,255); font-size:20px;">Profile</h1></a></li>
+        <li><a  href="list"><h1 style= "color:rgb(255,255,255);font-size:20px;">Candidates</h1></a></li>
+        <li><a  href="home"><h1 style="color:white ;font-size:20px">Elections</h1></a></li>
+        {% if user.is_superuser%} 
+        {% else%}
+                <li ><a  href="contact"><h1 style="color:rgb(255,255,255);font-size:20px">Contact Us</h1></a></li>
+        {% endif %}
+        <li style="float:right"><a  href="logout"><h1 style="color:rgb(255,255,255); font-size:20px;" >Log Out</h1></a></li>
+    </ul>
+    {%else %}
+    <ul>
+            <li style="float:right"><a  href="login"><h1 style="color:rgb(255,255,255); font-size:20px;" >Login/SignUp</h1></a></li>
+    </ul>
+               
+                {% endif %}
+{% comment %} end of navigation bar {% endcomment %}
+    {% if user.is_authenticated %}
+<h1 style="font-size: 50px;; text-align:center">
+      Welcome! 
+      {{user.username}}<br>
+      {% if user.is_superuser%}
+      {%else %}
+        Your Vote Matters
+      {%endif%}
+    </h1>
+    {%else %}
+    <h1 style="font-size: 50px;color:rgb(40, 59, 106); text-align:center">
+      Welcome To Online Voting System
+    </h1>
+   {% endif %}
+   {% if user.is_authenticated%}
+      {% comment %} <img
+        width="450px"
+
+src="https://www.surveylegend.com/wordpress/wp-content/uploads/2020/06/Online-Ballots.png"
+style="padding:10px" id="left"/>
+<p style="font-size: 30px;padding:0px 20px;">Increase turnout with online college elections</p>
+      <span style="padding: 30px ;font-size:25px">
+        
+        Perform complex elections for committees and other bodies in your
+        college online. With our online voting system you can assign different
+        groups of voters to their respective ballots with a simple click of a
+        mouse.  You'll save money on
+        printing ballot papers, reduce costs associated with postage and won't
+        have to rely on materials being transported on time.
+      </span>
+  
+          <img width ="450px"
+        src="https://spectrum.ieee.org/media-library/photo-of-user-while-online-voting.jpg?id=25581776&width=980"
+         style="padding:100px 100px 30px 10px" id="right">
+     <p style="font-size:30px ;padding:50px 20px 20px 20px">Easy and efficient election management</p>
+      <span style="padding :30px;font-size:25px;" >
+ 
+Your institution won't require any special hardware or system for carrying out an online election.
+Our online voting software allows you to prepare and conduct your election entirely online.
+ By managing these processes directly in our online voting system you'll be able to save the most
+ time and effort when planning your next election.
+      </span>
+          
+        <img src="https://www.aclunc.org/sites/default/files/styles/article_hero_regular/public/KYR-Voting-social-graphics-ENGLISHx8-NJ-GH-8.20.20_Page_1.jpg?h=49f0689b&itok=J1EC0B_b"
+        width="450px"style="padding:160px 20px 20px 20px" id="left">
+
+        <span style="padding:30px;font-size:25px;" >
+             <p style="font-size:30px;padding:130px 10px 30px 40px">Include online voting in the electoral code</p>
+As a college, university or academy, you'll simply need to adjust the relevant section in your electoral
+ code or regulations in order to incorporate online voting into your organizaton. The electoral code should
+ explicitly include the use of electronic voting.
+        </span> 
+    </h1>{% endcomment %}
+
+{%else %}
+{% comment %} <img src="https://caltechsites-prod.s3.amazonaws.com/scienceexchange/images/Caltech-Voting-Phone-Online-S.2e16d0ba.fill-933x525-c100.jpg"/> {% endcomment %}
+{% endif %}
+  </body>
+</html>
